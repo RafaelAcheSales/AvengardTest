@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Abilities/AttributeSets/PlayerAttributeSetBase.h"
 #include "Net/UnrealNetwork.h"
 
@@ -22,6 +21,21 @@ void UPlayerAttributeSetBase::OnRep_JumpForce(const FGameplayAttributeData& OldJ
 void UPlayerAttributeSetBase::OnRep_MaxJumpForce(const FGameplayAttributeData& OldMaxJumpForce)
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UPlayerAttributeSetBase, MaxJumpForce, OldMaxJumpForce);
+}
+
+void UPlayerAttributeSetBase::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
+{
+	Super::PreAttributeChange(Attribute, NewValue);
+
+	if (Attribute == GetManaAttribute())
+	{
+		NewValue = FMath::Clamp<float>(NewValue, 0.0f, GetMaxMana());
+	}
+	else if (Attribute == GetJumpForceAttribute())
+	{
+		NewValue = FMath::Clamp<float>(NewValue, 0.0f, GetMaxJumpForce());
+	}
+
 }
 
 void UPlayerAttributeSetBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

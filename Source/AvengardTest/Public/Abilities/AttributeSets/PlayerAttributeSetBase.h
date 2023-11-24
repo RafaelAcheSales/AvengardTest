@@ -45,6 +45,8 @@ public:
 	virtual void OnRep_JumpForce(const FGameplayAttributeData& OldJumpForce);
 	UFUNCTION()
 	virtual void OnRep_MaxJumpForce(const FGameplayAttributeData& OldMaxJumpForce);
+
+	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 	
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 };
