@@ -21,6 +21,8 @@ class AVENGARDTEST_API UPlayerAttributeSetBase : public UAttributeSet
 	GENERATED_BODY()
 	
 public:
+
+	UPlayerAttributeSetBase();
 	UPROPERTY(BlueprintReadOnly, Category = "Mana", ReplicatedUsing = OnRep_Mana)
 	FGameplayAttributeData Mana;
 	ATTRIBUTE_ACCESSORS(UPlayerAttributeSetBase, Mana)

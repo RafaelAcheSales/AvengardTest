@@ -3,6 +3,14 @@
 #include "Abilities/AttributeSets/PlayerAttributeSetBase.h"
 #include "Net/UnrealNetwork.h"
 
+UPlayerAttributeSetBase::UPlayerAttributeSetBase()
+{
+	Mana = 100.0f;
+	MaxMana = 100.0f;
+	JumpForce = 0.0f;
+	MaxJumpForce = 1000.0f;
+}
+
 void UPlayerAttributeSetBase::OnRep_Mana(const FGameplayAttributeData& OldMana)
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UPlayerAttributeSetBase, Mana, OldMana);
