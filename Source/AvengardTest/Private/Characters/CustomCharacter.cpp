@@ -38,12 +38,19 @@ void ACustomCharacter::BeginPlay()
 	{
 		// Bind to attribute change using the Ability System Component
 		AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(UPlayerAttributeSetBase::GetJumpForceAttribute()).AddUObject(this, &ACustomCharacter::OnJumpForceChanged);
+		//AttributeSet->OnManaChangedDelegate.AddDynamic(this, &ACustomCharacter::OnManaChanged);
 	}
 }
 
 void ACustomCharacter::OnJumpForceChanged(const FOnAttributeChangeData& Data)
 {
 
+}
+
+void ACustomCharacter::OnManaChanged(float NewMana, float OldMana)
+{
+	//update mana bar
+	
 }
 
 // Called every frame
@@ -76,6 +83,15 @@ void ACustomCharacter::InitializeAbilities()
 	}
 }
 
+void ACustomCharacter::GrantAbility(TSubclassOf<UGameplayAbility> Ability)
+{
+	if (IsValid(AbilitySystemComponent))
+	{
+		FGameplayAbilitySpecHandle Handle = AbilitySystemComponent->GiveAbility(
+			FGameplayAbilitySpec(Ability, 1, INDEX_NONE, this));
+	}
+}
+
 void ACustomCharacter::Jump()
 {
 	Super::Jump();
@@ -88,6 +104,8 @@ float ACustomCharacter::GetMana() const
 		return AttributeSet->GetMana();
 	}
 	return 0.0f;
+	
+
 }
 
 float ACustomCharacter::GetMaxMana() const

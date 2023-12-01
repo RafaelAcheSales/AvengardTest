@@ -29,6 +29,9 @@ public:
 	// Initialize our abilities
 	virtual void InitializeAbilities();
 
+	UFUNCTION(BlueprintCallable, Category = "Abilities")
+	virtual void GrantAbility(TSubclassOf<UGameplayAbility> Ability);
+
 	// Override the native jump function to use our custom JumpForce attribute
 	virtual void Jump() override;
 
@@ -70,4 +73,7 @@ protected:
 private:
 	// Handle attribute changes
 	void OnJumpForceChanged(const FOnAttributeChangeData& Data);
+
+	UFUNCTION()
+	void OnManaChanged(float NewMana, float OldMana);
 };

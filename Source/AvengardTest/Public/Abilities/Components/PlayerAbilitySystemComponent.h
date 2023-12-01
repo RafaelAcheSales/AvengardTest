@@ -17,4 +17,8 @@ class AVENGARDTEST_API UPlayerAbilitySystemComponent : public UAbilitySystemComp
 	GENERATED_BODY()
 
 
+
+
+
+
 };

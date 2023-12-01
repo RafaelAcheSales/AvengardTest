@@ -19,6 +19,8 @@ void UPlayerAttributeSetBase::OnRep_Mana(const FGameplayAttributeData& OldMana)
 void UPlayerAttributeSetBase::OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana)
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UPlayerAttributeSetBase, MaxMana, OldMaxMana);
+
+	OnManaChangedDelegate.Broadcast(Mana.GetCurrentValue(), MaxMana.GetCurrentValue());
 }
 
 void UPlayerAttributeSetBase::OnRep_JumpForce(const FGameplayAttributeData& OldJumpForce)
