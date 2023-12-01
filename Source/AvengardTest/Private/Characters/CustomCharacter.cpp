@@ -67,6 +67,13 @@ UAbilitySystemComponent* ACustomCharacter::GetAbilitySystemComponent() const
 
 void ACustomCharacter::InitializeAbilities()
 {
+	if (IsValid(AbilitySystemComponent))
+	{
+		FGameplayAbilitySpecHandle Handle = AbilitySystemComponent->GiveAbility(
+			FGameplayAbilitySpec(USuperJumpGameplayAbility::StaticClass(), 1, INDEX_NONE, this));
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Initialize"));
+
+	}
 }
 
 void ACustomCharacter::Jump()

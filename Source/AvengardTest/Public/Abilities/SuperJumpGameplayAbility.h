@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "Characters/CustomCharacter.h"
+#include "Effects/PlayerGameplayEffect.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "CoreMinimal.h"
 #include "Abilities/GameplayAbility.h"
@@ -18,6 +18,7 @@ class AVENGARDTEST_API USuperJumpGameplayAbility : public UGameplayAbility
 public:
     // Constructor
     USuperJumpGameplayAbility();
+
 
 protected:
     // The activation function for the ability
