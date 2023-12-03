@@ -21,6 +21,7 @@ public:
 
 
 
+
 protected:
     // The activation function for the ability
     virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle,

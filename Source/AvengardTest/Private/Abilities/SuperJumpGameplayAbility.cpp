@@ -8,9 +8,12 @@ USuperJumpGameplayAbility::USuperJumpGameplayAbility()
 }
 
 
+    
+
 
 void USuperJumpGameplayAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)
 {
+
     
     // Usual ability activation checks
     if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
@@ -18,6 +21,8 @@ void USuperJumpGameplayAbility::ActivateAbility(const FGameplayAbilitySpecHandle
         // Handle failure
         return;
     }
+    UAbilitySystemComponent* AbilitySystemComponent = GetAbilitySystemComponentFromActorInfo();
+
 
     
 
